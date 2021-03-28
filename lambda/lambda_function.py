@@ -1,6 +1,6 @@
 import boto3
 import pandas as pd
-import transformation
+from transformation import transform
 import psycopg2
 import os
 
@@ -70,6 +70,12 @@ def lambda_handler(event, context):
 
     # Connecting to the database
     conn = connect(param_dic)
+    
+    # Delete existing data
+    cursor=conn.cursor()
+    cursor.execute("delete from covid_case where true")
+    conn.commit()
+    cursor.close()
 
     # Inserting each row
     for index, row in dataframe.iterrows():
