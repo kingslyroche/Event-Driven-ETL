@@ -18,6 +18,6 @@ jobs:
       - name: Bucket for CloudFormation Stack
         run: aws s3 mb s3://kingslyrochecfetl   
       - name: Package CloudFormation Stack
-        run: aws cloudformation package --template-file template.yaml --s3-bucket kingslyrochecf --output-template-file template.packaged.yaml
+        run: aws cloudformation package --template-file template.yaml --s3-bucket kingslyrochecfetl --output-template-file template.packaged.yaml
       - name: Deploy CloudFormation Stack
         run: aws cloudformation deploy --template-file template.packaged.yaml --stack-name ETL --capabilities CAPABILITY_IAM --parameter-overrides DBUsername=${{ secrets.DBUsername }} DBPassword=${{ secrets.DBPassword }}
