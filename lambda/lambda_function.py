@@ -4,6 +4,7 @@ from transformation import transform
 import psycopg2
 import os
 
+
 rdsEndpoint = os.environ['endpoint']
 rdsPort = os.environ['port']
 rdsUser = os.environ['user']
@@ -85,3 +86,6 @@ def lambda_handler(event, context):
         single_insert(conn, query)
     # Close the connection
     conn.close()
+
+
+#just curious
